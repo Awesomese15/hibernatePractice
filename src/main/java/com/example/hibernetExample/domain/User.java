@@ -5,6 +5,7 @@ import org.hibernate.annotations.GeneratorType;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -12,6 +13,8 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
 

@@ -3,6 +3,7 @@ package com.example.hibernetExample.domain;
 import javax.persistence.*;
 
 @Entity
+@Table (name = "address")
 public class Address {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -10,8 +11,7 @@ public class Address {
     private int id;
     private String street;
     private String city;
-    @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "address")
     private User user;
 
     public Address(int id, String street, String city) {
