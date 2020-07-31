@@ -11,7 +11,8 @@ public class Address {
     private int id;
     private String street;
     private String city;
-    @OneToOne(mappedBy = "address")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn( name="user_id", nullable = false)
     private User user;
 
     public Address(int id, String street, String city) {
